@@ -24,7 +24,9 @@
 
 ### For the measurements, [D-ITG](https://traffic.comics.unina.it/software/ITG/) was used as traffic generator for more controll.
 
-### Lastly, graph plottings of the results are presented for drawing conclusions.
+## Finally
+
+In the [Report](https://github.com/christakakis/open-flow_migration/blob/main/05.%20Docs/Report.pdf) file we'll summarize our results and comment the graph plots to draw conclusions.
 
 This repository was initially created to store my personal python code but also be available to others trying to build or understand something similar.
 The code contained in this repo is made specifically for a "Computer Networks for Big Data" course of my MSc program.
