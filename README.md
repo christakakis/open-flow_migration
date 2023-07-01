@@ -1,5 +1,4 @@
 # Implementation of Flow Migration Technique using OpenFlow
-**Analysis and Visualization of network traffic from data centres based on trace.pcap file.**
 
 #### In this repo we implement a technique for transferring a network flow to another path of a network topology, while assessing any communication complications, such as increase in delay, packet loss and packet reordering. The flow transfer will  be done using OpenFlow.
 
