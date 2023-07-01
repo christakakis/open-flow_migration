@@ -10,6 +10,8 @@
 - In the Mininet environment with SDN Hub (w/ Docker) VirtualBox image
 - The forwarding rules on the switches along the initial and final path will be inserted or modified appropriately.
 - Forwarding rules will be installed using command-line tools (e.g. ovs-ofctl) that will be a part of bash scripts in order to automate the procedure.
+
+![](https://raw.githubusercontent.com/christakakis/open-flow_migration/main/05.%20Docs/FlowMigrationExample.png)
   
 • **(2) Experimental results.** Measuring any communication complications. In particular, the following are investigated:
 - Jitter in seconds (variation in delay during flow transfer)
