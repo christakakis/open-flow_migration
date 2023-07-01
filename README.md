@@ -18,11 +18,11 @@
 - Packet loss
 - Packet Reordering. Variation in the order of arrival of packets at the receiver (with respect to the order of dispatch) during the flow transfer.
 
-### The experiments were carried out on [Abilene](http://www.topology-zoo.org/files/Abilene.gml) network topology, found in the [Internet Topology Zoo](http://www.topology-zoo.org/dataset.html), added with some delay of 1-3 ms between two consecutive nodes. In order to perform the measurments we must have node degree (>3).
+#### The experiments were carried out on [Abilene](http://www.topology-zoo.org/files/Abilene.gml) network topology, found in the [Internet Topology Zoo](http://www.topology-zoo.org/dataset.html), added with some delay of 1-3 ms between two consecutive nodes. In order to perform the measurments we must have node degree (>3).
 
-### The experiments were repeated for network paths with different number of hops (e.g. 4-8), while limiting the overlap between the initial and final paths as much as possible (with the ideal case being no overlap at all). 
+#### The experiments were repeated for network paths with different number of hops (e.g. 4-8), while limiting the overlap between the initial and final paths as much as possible (with the ideal case being no overlap at all). 
 
-### For the measurements, [D-ITG](https://traffic.comics.unina.it/software/ITG/) was used as traffic generator for more controll.
+#### For the measurements, [D-ITG](https://traffic.comics.unina.it/software/ITG/) was used as traffic generator for more controll.
 
 ## Finally
 
