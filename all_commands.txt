@@ -1,0 +1,77 @@
+# Install D-ITG
+sudo apt-get install unzip
+sudo apt-get install g++
+cd mininet/custom
+wget https://traffic.comics.unina.it/software/ITG/codice/D-ITG-2.8.1-r1023-src.zip --no-check-certificate
+unzip D-ITG-2.8.1-r1023-src.zip
+cd D-ITG-2.8.1-r1023/src
+make
+
+# Start mininet based on python file
+sudo mn --custom mininet/custom/AbilineTopo.py --topo abilinetopo --mac --arp --link tc,delay=2ms --switch ovsk --controller remote
+
+###########################################
+################## CASE 1 #################
+# Running the flow without changing rules #
+###########################################
+
+# Run rule1_basic.sh on terminal
+bash rule1_basic.sh
+
+# Test ping between sender and receiver
+h5 ping h11
+
+# Capture the UDP packets in a .pcap file
+sudo tcpdump -i any -w UDP_routing1.pcap 'udp'
+
+# Open two new terminals. For sender and receiver
+xterm h5
+xterm h11
+
+# On receiver's terminal
+cd mininet/custom/D-ITG-2.8.1-r1023/bin
+./ITGRecv
+./ITGDec receiver.log -c 1000
+
+# On sender's terminal
+cd mininet/custom/D-ITG-2.8.1-r1023/bin
+./ITGSend –T UDP  –a 10.0.0.11 –c 100 –C 10 –t 30000 -l sender.log –x receiver.log
+./ITGDec sender.log
+
+# Display reordered packets using tshark with the following filter
+sudo tshark -r UDP_routing1.pcap -Y "frame.time_delta < 0" | wc -l
+
+#########################################
+################# CASE 2 ################
+# Running the flow while changing rules #
+#########################################
+
+# Run rule1_basic.sh on terminal
+bash rule1_basic.sh
+
+# Test ping between sender and receiver
+h5 ping h11
+
+# Open two new terminals. For sender and receiver
+xterm h5
+xterm h11
+
+# Capture the UDP packets in a .pcap file
+sudo tcpdump -i any -w UDP_routing1_alt.pcap 'udp'
+
+# On receiver's terminal
+cd mininet/custom/D-ITG-2.8.1-r1023/bin
+./ITGRecv
+./ITGDec receiver.log -c 1000
+
+# On sender's terminal
+cd mininet/custom/D-ITG-2.8.1-r1023/bin
+./ITGSend –T UDP  –a 10.0.0.11 –c 100 –C 10 –t 30000 -l sender.log –x receiver.log
+./ITGDec sender.log
+
+# While the ongoing flow is transmitted we do the following on the non-Mininet terminal
+bash del.sh
+bash rule1_alternate.sh
+
+# Display reordered packets using tshark with the following filter
+sudo tshark -r UDP_routing1_alt.pcap -Y "frame.time_delta < 0" | wc -l
